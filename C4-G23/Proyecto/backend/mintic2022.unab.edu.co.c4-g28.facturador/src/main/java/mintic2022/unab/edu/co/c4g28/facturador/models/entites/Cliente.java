@@ -30,7 +30,7 @@ public class Cliente implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 	
-    @NotEmpty(message="no puede estar vacio...")
+    @NotEmpty(message="no puede estar vacio..ss.")
 	@Size(min=5, max=30, message="el tamaño debe estar entre 5 y 30")	
 	@Column(nullable=false)
     private String nombre;
