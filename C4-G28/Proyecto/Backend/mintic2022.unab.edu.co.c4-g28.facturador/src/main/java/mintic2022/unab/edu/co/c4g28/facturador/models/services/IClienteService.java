@@ -10,7 +10,7 @@ public interface IClienteService {
 	
 	public Cliente findById(Long id);
 	
-	public void save(Cliente cliente);
+	public Cliente save(Cliente cliente);
 	
 	public void delete(Cliente cliente);
 
