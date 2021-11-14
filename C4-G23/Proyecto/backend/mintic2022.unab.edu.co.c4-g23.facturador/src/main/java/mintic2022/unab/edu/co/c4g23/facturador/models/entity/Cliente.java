@@ -28,8 +28,7 @@ public class Cliente implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long Id;
-	
+	private Long Id;	
 	
 	@NotEmpty(message="no puede estar vacio")
     @Size(min=4,max=20, message="el tamaño tiene que estar entre 4 y 20 ")
@@ -58,7 +57,7 @@ public class Cliente implements Serializable {
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Region region;
 
-	public Region getRegion() {
+	public Region getRegion(){
 		return region;
 	}
 

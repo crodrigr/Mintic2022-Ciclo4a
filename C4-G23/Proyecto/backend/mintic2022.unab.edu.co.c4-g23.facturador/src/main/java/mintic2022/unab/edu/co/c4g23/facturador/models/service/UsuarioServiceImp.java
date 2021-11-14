@@ -15,10 +15,12 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 //import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import java.util.stream.Collectors;
 
+@Service
 public class UsuarioServiceImp  implements IUsuarioService, UserDetailsService {
 	
 	
@@ -35,6 +37,7 @@ public class UsuarioServiceImp  implements IUsuarioService, UserDetailsService {
 	}
 
 	@Override
+	@Transactional(readOnly=true)
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
 		Usuario usuario=usuarioDao.findByUsername(username);
@@ -50,7 +53,7 @@ public class UsuarioServiceImp  implements IUsuarioService, UserDetailsService {
 				 .peek(authority->logger.info("Role: "+authority.getAuthority()))
 				 .collect(Collectors.toList());
 		 
-		return new User(usuario.getUsername(),usuario.getPassword(),usuario.getEnable(),true,true,true,authorities);
+		return new User(usuario.getUsername(),usuario.getPassword(),usuario.getEnabled(),true,true,true,authorities);
 		 
 	}
 
