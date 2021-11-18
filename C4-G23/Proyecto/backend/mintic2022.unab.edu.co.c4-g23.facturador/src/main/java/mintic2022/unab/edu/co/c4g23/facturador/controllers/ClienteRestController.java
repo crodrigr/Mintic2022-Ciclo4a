@@ -30,7 +30,7 @@ import mintic2022.unab.edu.co.c4g23.facturador.models.entity.Cliente;
 import mintic2022.unab.edu.co.c4g23.facturador.models.service.IClienteService;
 
 
-@CrossOrigin(origins= {"http://localhost:4200"})
+@CrossOrigin(origins= {"http://localhost:4200","*"})
 @RestController
 @RequestMapping("/api")
 public class ClienteRestController {
