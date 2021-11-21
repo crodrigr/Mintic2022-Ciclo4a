@@ -1,0 +1,19 @@
+<div class="container pt-3">
+    <div class="m-2">
+        <h1>{{title}}</h1>
+    </div> 
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>          
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let producto of productos; let i=index;">
+            <th scope="row">{{i+1}}</th>
+            <td>{{producto}}</td>          
+          </tr>       
+        </tbody>
+      </table>
+    </div>

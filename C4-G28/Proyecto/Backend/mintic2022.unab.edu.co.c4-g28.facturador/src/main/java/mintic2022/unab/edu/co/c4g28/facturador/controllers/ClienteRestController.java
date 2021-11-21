@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import mintic2022.unab.edu.co.c4g28.facturador.models.entites.Cliente;
+import mintic2022.unab.edu.co.c4g28.facturador.models.entites.Region;
 import mintic2022.unab.edu.co.c4g28.facturador.models.services.IClienteService;
 
 
@@ -41,13 +42,13 @@ public class ClienteRestController {
 		return clienteService.findAll();	
 	}
 	
-	@Secured({"ROLE_ADMIN","ROLE_USER"})
+	//@Secured({"ROLE_ADMIN","ROLE_USER"})
 	@GetMapping("/cliente/{id}")
 	public Cliente show(@PathVariable Long id){
 		return clienteService.findById(id);
 	}
 	
-	@Secured({"ROLE_ADMIN"})
+	///@Secured({"ROLE_ADMIN"})
 	@PostMapping("/clientes")
 	public ResponseEntity<?> create(@Valid @RequestBody Cliente cliente, BindingResult result){
 		
@@ -83,7 +84,7 @@ public class ClienteRestController {
 		
 	}
 	
-	@Secured({"ROLE_ADMIN"})
+	//@Secured({"ROLE_ADMIN"})
 	@PutMapping("/cliente/{id}")	
 	public ResponseEntity<?> update(@Valid @RequestBody Cliente cliente,BindingResult result,@PathVariable  Long id){
 		
@@ -129,7 +130,7 @@ public class ClienteRestController {
 		
 	}
 	
-	@Secured({"ROLE_ADMIN"})
+	//@Secured({"ROLE_ADMIN"})
 	@DeleteMapping("/clientes/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public ResponseEntity<?> delete(@PathVariable Long id){
@@ -149,6 +150,12 @@ public class ClienteRestController {
 		 response.put("mensaje", "El cliente eliminado con éxito");		 
 		 return new ResponseEntity<Map<String,Object>>(response,HttpStatus.OK);
 		
+	}
+	
+	//@Secured("ROLE_ADMIN")
+	@GetMapping("/clientes/regiones")
+	public List<Region> listarRegiones(){
+		return clienteService.findAllRegiones();
 	}
 	
 	

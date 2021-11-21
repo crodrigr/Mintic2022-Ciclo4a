@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import mintic2022.unab.edu.co.c4g28.facturador.models.dao.IUsuarioDao;
+import mintic2022.unab.edu.co.c4g28.facturador.models.entites.Cliente;
 import mintic2022.unab.edu.co.c4g28.facturador.models.entites.Usuario;
 
 @Service
@@ -31,6 +32,13 @@ public class UsuarioServiceImpl implements IUsuarioService, UserDetailsService {
 	public Usuario findByUsername(String username) {
 		return usuarioDao.findByUsername(username);
 	}
+	@Override
+	@Transactional
+	public void delete(Usuario usuario) {
+		usuarioDao.delete(usuario);
+		
+	}
+
 
 	@Override
 	@Transactional(readOnly=true)

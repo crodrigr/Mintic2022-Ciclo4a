@@ -1,0 +1,15 @@
+<button type="button" (click)="setHabilitar()" class="btn btn-primary"> 
+ {{habilitar==true? 'Ocultar':'Mostrar'}}
+</button>
+<button type="button" (click)="mostrarMensaje()" class="btn btn-danger">Light</button>
+<div>
+   <p>{{msg}}</p>
+</div>
+<div clas="card">
+   <div class="card-header">
+       Listado de facturas
+   </div>   
+   <ul class="list-group" *ngIf="habilitar">
+       <li class="list-group-item" *ngFor="let factura of facturas">{{factura}}</li>
+   </ul> 
+</div>

@@ -1,0 +1,17 @@
+<p>Lista de productos</p>
+<table class="table">
+   <thead> 
+   <tr>
+       <th scope="col">Id</th>
+       <th scope="col">Nombre</th>
+   </tr>
+   </thead>
+   <tbody>
+      <tr *ngFor=" let producto of productos; let i=index">
+      <td>{{i+1}}</td>
+      <td>{{producto}}</td>
+   </tr>
+   </tbody>
+
+
+</table>

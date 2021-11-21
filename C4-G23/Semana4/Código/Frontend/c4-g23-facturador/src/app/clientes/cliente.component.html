@@ -1,0 +1,25 @@
+<div class="container pt-3">
+<div class="m-2">
+    <h1>{{title}}</h1>   
+</div> 
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>     
+        <th scope="col">Email</th>     
+        <th scope="col">Fecha</th>               
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientes">
+        <th scope="row">{{cliente.id}}</th>
+        <td>{{cliente.nombre}}</td>  
+        <td>{{cliente.apellido}}</td>   
+        <td>{{cliente.email}}</td>   
+        <td>{{cliente.createAt}}</td>           
+      </tr>
+    </tbody>
+  </table>
+</div>

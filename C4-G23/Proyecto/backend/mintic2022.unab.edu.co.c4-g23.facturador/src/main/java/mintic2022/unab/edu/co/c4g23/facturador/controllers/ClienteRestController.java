@@ -30,7 +30,7 @@ import mintic2022.unab.edu.co.c4g23.facturador.models.entity.Cliente;
 import mintic2022.unab.edu.co.c4g23.facturador.models.service.IClienteService;
 
 
-@CrossOrigin(origins= {"http://localhost:4200","*"})
+@CrossOrigin(origins= {"http://localhost:4200"})
 @RestController
 @RequestMapping("/api")
 public class ClienteRestController {
@@ -44,13 +44,13 @@ public class ClienteRestController {
 		return clienteService.findAll();
 	}
 	
-	@Secured({"ROLE_ADMIN","ROLE_USER"})
+	//@Secured({"ROLE_ADMIN","ROLE_USER"})
 	@GetMapping("/cliente/{Id}")
 	public Cliente show(@PathVariable Long Id) {
 		return clienteService.findById(Id);
 	}
 	
-	@Secured({"ROLE_ADMIN"})
+	//@Secured({"ROLE_ADMIN"})
 	@PostMapping("/clientes")	
 	public ResponseEntity<?> create(@Valid @RequestBody  Cliente cliente, BindingResult result){
 		
@@ -82,7 +82,7 @@ public class ClienteRestController {
 		
 	}
 	
-	@Secured({"ROLE_ADMIN"})
+	//@Secured({"ROLE_ADMIN"})
 	@DeleteMapping("/clientes/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id){
 		
@@ -103,7 +103,7 @@ public class ClienteRestController {
 		
 	}
 	
-	@Secured({"ROLE_ADMIN"})
+	//@Secured({"ROLE_ADMIN"})
     @PutMapping("cliente/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<?> update(@Valid @RequestBody  Cliente cliente,@PathVariable Long id, BindingResult result) {
