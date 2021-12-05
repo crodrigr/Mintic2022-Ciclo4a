@@ -46,7 +46,7 @@ public class Cliente implements Serializable {
 	
 	private String direccion;
 	
-	@NotNull(message="no puede estar vacio")
+	//@NotNull(message="no puede estar vacio")
 	@Column(name = "create_at")
 	@Temporal(TemporalType.DATE)
 	private Date createAt;

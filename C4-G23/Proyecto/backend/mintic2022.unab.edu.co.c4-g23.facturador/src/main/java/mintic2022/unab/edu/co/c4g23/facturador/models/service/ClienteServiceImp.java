@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import mintic2022.unab.edu.co.c4g23.facturador.models.dao.IClienteDao;
 import mintic2022.unab.edu.co.c4g23.facturador.models.entity.Cliente;
+import mintic2022.unab.edu.co.c4g23.facturador.models.entity.Region;
 
 @Service
 public class ClienteServiceImp implements IClienteService {
@@ -38,6 +39,12 @@ public class ClienteServiceImp implements IClienteService {
 	@Transactional
 	public void delete(Cliente cliente) {
 		clienteDao.delete(cliente);
+		
+	}
+
+	@Override
+	public List<Region> findAllRegiones() {
+	  return clienteDao.findAllRegiones();
 		
 	}
 

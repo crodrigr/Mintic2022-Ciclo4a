@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  apiUrl: 'https://app-mintic-c4-g23.herokuapp.com',
+  apiUrl: 'http://localhost:8080',
   production: false
 };
 

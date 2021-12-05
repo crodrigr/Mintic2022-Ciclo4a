@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import mintic2022.unab.edu.co.c4g23.facturador.models.entity.Cliente;
+import mintic2022.unab.edu.co.c4g23.facturador.models.entity.Region;
 import mintic2022.unab.edu.co.c4g23.facturador.models.service.IClienteService;
 
 
@@ -44,13 +45,13 @@ public class ClienteRestController {
 		return clienteService.findAll();
 	}
 	
-	//@Secured({"ROLE_ADMIN","ROLE_USER"})
+	@Secured({"ROLE_ADMIN","ROLE_USER"})
 	@GetMapping("/cliente/{Id}")
 	public Cliente show(@PathVariable Long Id) {
 		return clienteService.findById(Id);
 	}
 	
-	//@Secured({"ROLE_ADMIN"})
+	@Secured({"ROLE_ADMIN"})
 	@PostMapping("/clientes")	
 	public ResponseEntity<?> create(@Valid @RequestBody  Cliente cliente, BindingResult result){
 		
@@ -82,7 +83,7 @@ public class ClienteRestController {
 		
 	}
 	
-	//@Secured({"ROLE_ADMIN"})
+	@Secured({"ROLE_ADMIN"})
 	@DeleteMapping("/clientes/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id){
 		
@@ -103,7 +104,7 @@ public class ClienteRestController {
 		
 	}
 	
-	//@Secured({"ROLE_ADMIN"})
+	@Secured({"ROLE_ADMIN"})
     @PutMapping("cliente/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<?> update(@Valid @RequestBody  Cliente cliente,@PathVariable Long id, BindingResult result) {
@@ -151,6 +152,12 @@ public class ClienteRestController {
     	
     	
     	
+    }
+    
+    @Secured("ROLE_ADMIN")
+    @GetMapping("/clientes/regiones")
+    public List<Region> listarRegiones(){
+    	return this.clienteService.findAllRegiones();
     }
 	
 

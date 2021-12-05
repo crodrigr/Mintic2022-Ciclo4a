@@ -64,13 +64,13 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 		return new JwtTokenStore(accessTokenConverter());
 	}
 
-	 @Bean
-     public JwtAccessTokenConverter  accessTokenConverter() {
-    	 JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
-    	 jwtAccessTokenConverter.setSigningKey(JwtConfig.LLAVE_SECRETA);
-    	 return jwtAccessTokenConverter;
-    	 
-     }
+		 @Bean
+	     public JwtAccessTokenConverter  accessTokenConverter() {
+	    	 JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
+	    	 jwtAccessTokenConverter.setSigningKey(JwtConfig.LLAVE_SECRETA);
+	    	 return jwtAccessTokenConverter;
+	    	 
+	     }
     
 
 }

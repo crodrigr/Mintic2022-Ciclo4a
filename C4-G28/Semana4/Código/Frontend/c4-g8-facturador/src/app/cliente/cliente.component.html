@@ -1,24 +1,45 @@
-<h1>Listado de clientes</h1>
-<table class="table">
-   <thead> 
-   <tr>
-       <th scope="col">Id</th>
-       <th scope="col">Nombre</th>
-       <th scope="col">Apellido</th>
-       <th scope="col">Email</th>
-       <th scope="col">CreateAt</th>
-       
-   </tr>
-   </thead>
-   <tbody>
-   <tr *ngFor=" let cliente of clientes">
-      <td>{{cliente.id}}</td>
-      <td>{{cliente.nombre}}</td>
-      <td>{{cliente.apellido}}</td>
-      <td>{{cliente.email}}</td>
-      <td>{{cliente.createAt}}</td>  
-   </tr>
-   </tbody>
+<detalle-cliente *ngIf="clienteSeleccionado" 
+[cliente] ="clienteSeleccionado">
+</detalle-cliente>
 
-
-</table>
+<div class="card border-primary mb3">
+<div class="card-header">Clientes</div>
+<div class="card-body text-primary">
+   <h5 class="card-title">Listado de clientes</h5>
+  <div class="my-2 text-left">
+   <button type="button" routerLink='/clientes/form' *ngIf="authService.hasRole('ROLE_ADMIN')" class="btn btn-success">Crear</button>
+  </div>
+  <div *ngIf="clientes?.length==0" class="alert alert-info">
+   No hay registros en la base de datos!
+  </div>
+  <table class="table table-border table-hover text-primary">
+    <thead>
+       <tr>
+          <th></th>
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Email</th>
+          <th>Fecha</th>
+          <th>Crear factura</th>
+          <th>Actualizar</th>
+          <th>Eliminar</th>
+       </tr>
+    </thead>
+    <tbody>      
+        <tr *ngFor="let cliente of clientes">
+        <td><button type="button" class="btn btn-info" (click)="abrirModal(cliente)">Ver</button></td>
+        <td>{{cliente.id}}</td>
+        <td>{{cliente.nombre}}</td>
+        <td>{{cliente.apellido}}</td>
+        <td>{{cliente.email}}</td>
+        <td>{{cliente.createAt}}</td>
+        <td><button type="button" class="btn btn-secondary"  [routerLink]="['/facturas/form', cliente.id]">Crear factura</button></td>
+        <td><button type="button"   [routerLink]="['/clientes/form',cliente.id]"class="btn btn-success" [disabled]="role">Actualizar</button></td>
+        <td><button type="button"   class="btn btn-danger" (click)='delete(cliente)' [disabled]="role">Elminar</button></td>
+       </tr>
+    </tbody>
+  </table>
+  
+</div>
+</div>

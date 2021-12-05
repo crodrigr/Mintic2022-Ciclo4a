@@ -1,4 +1,45 @@
-<div class="container pt-3">
+<div class="card border-primary mb-3">
+ <div class="card-header">Clientes</div>
+ <div class="card-body text-primary">
+    <h5 class="card-title">Listado de clientes</h5>
+    <button type="button" routerLink="/clientes/form" class="btn btn-success" [disabled]="isDisable">Crear</button>
+ </div>
+ <div *ngIf="clientes?.length==0"  class="alert alert-info">No hay registros en la base de datos</div>
+                                                    
+  <table class="table table-bordered border-primary table-spriped"  >
+   <thead class="text-primary border-primary">
+     <tr>
+       <th>#</th>
+       <th>nombre</th>
+       <th>apellido</th>
+       <th>email</th>
+       <th>fecha</th>
+       <th>crear factura</th>
+       <th>editar</th>
+       <th>eliminar</th>
+     </tr>
+   </thead>
+   <tbody class="border-primary">
+      <tr *ngFor="let cliente of clientes">
+      <td>{{cliente.id}}</td>
+      <td>{{cliente.nombre}}</td>
+      <td>{{cliente.apellido}}</td>
+      <td>{{cliente.email}}</td>
+      <td>{{cliente.createAt}}</td>
+      <td><button type="button" class="btn btn-dark">Crear factura</button></td>
+      <td><button type="button" [routerLink]="['/clientes/form',cliente.id]" class="btn btn-primary" [disabled]="isDisable">Editar</button></td>
+      <td><button type="button" class="btn btn-danger" (click)='delete(cliente)' [disabled]="isDisable">Elminar</button></td>
+      </tr>
+   </tbody>
+  </table>
+
+
+</div>
+
+
+
+
+<!-- <div class="container pt-3">
 <div class="m-2">
     <h1>{{title}}</h1>   
 </div> 
@@ -22,4 +63,4 @@
       </tr>
     </tbody>
   </table>
-</div>
+</div> -->
